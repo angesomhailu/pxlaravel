@@ -34,9 +34,18 @@ class AtheletController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store()
     {
-        //
+        // $item = Athelet::where('sport', 'football')->where(function ($query) {
+        //     $query->where('age', '>', 15)->orWhere('age', '<', 20);
+        // })->get();
+        //$item = Athelet::where('sport', 'basketball')->whereBetween('age', [20, 30])->get();
+        // $item = Athelet::where('sport', 'basketball')->whereNotBetween('age', [20, 30])->get();
+        //$item = Athelet::whereIn('id', [1, 2, 6])->get();
+        //$item = Athelet::whereNotIn('id', [1, 2, 6])->get();
+        //$item = Athelet::whereAny(['age', 'id'], 23)->get();
+        $item = Athelet::whereAll(['age', 'id'], 10)->get();
+        return $item;
     }
 
     /**
@@ -70,6 +79,7 @@ class AtheletController extends Controller
     public function update(Request $request, string $id)
     {
         //
+
     }
 
     /**
