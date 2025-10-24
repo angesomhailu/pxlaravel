@@ -12,9 +12,12 @@ class TeacherController extends Controller
      */
     public function index()
     {
-        return Teacher::all();;
+        return Teacher::all();
     }
-
+    public function getData()
+    {
+        return Teacher::find(4);
+    }
     /**
      * Show the form for creating a new resource.
      */

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\StudentsController;
 use App\Http\Controllers\AtheletController;
+use App\Http\Controllers\CarController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -11,11 +12,13 @@ Route::get('/', function () {
 Route::fallback(function () {
     return "The route you are looking for does not exist.";
 });
+//teachers routes
 Route::get('/teacher', [TeacherController::class, 'index']);
 Route::get('/added-teacher', [TeacherController::class, 'create']);
 Route::get('/show-teacher/{id}', [TeacherController::class, 'show']);
 Route::get('/update-teacher/{id}', [TeacherController::class, 'edit']);
 Route::get('/delete-teacher/{id}', [TeacherController::class, 'destroy']);
+Route::get('/watch-teacher', [TeacherController::class, 'getData']);
 //student routes
 Route::get('/students', [StudentsController::class, 'index']);
 Route::get('/add-student', [StudentsController::class, 'create']);
@@ -28,3 +31,8 @@ Route::get('/add-athelet', [AtheletController::class, 'create']);
 Route::get('/show-athelet/{id}', [AtheletController::class, 'show']);
 Route::get('/edit-athelet/{id}', [AtheletController::class, 'edit']);
 Route::get('/delete-athelet/{id}', [AtheletController::class, 'destroy']);
+//routes of cars
+Route::get('/add-cars', [CarController::class, 'addData']);
+Route::get('/get-cars', [CarController::class, 'getData']);
+Route::get('/update-cars', [CarController::class, 'updateData']);
+Route::get('/delete-cars', [CarController::class, 'deleteData']);
