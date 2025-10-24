@@ -2,17 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Student;
 use Illuminate\Http\Request;
-use App\Models\Teacher;
 
-class TeacherController extends Controller
+class StudentsController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return Teacher::all();;
+        //
+        return Student::all();
     }
 
     /**
@@ -21,12 +22,13 @@ class TeacherController extends Controller
     public function create()
     {
         //
-        $item = new Teacher();
-        $item->name = 'John Doe';
-        $item->email = 'john@example.com';
-        $item->subject = 'physics';
+        $item = new Student();
+        $item->name = 'kebede asfaw';
+        $item->email = 'kebede@example.com';
+        $item->age = 24;
+        $item->gender = 'male';
         $item->save();
-        return "Teacher Added successfully";
+        return "Student added successfully";
     }
 
     /**
@@ -43,7 +45,7 @@ class TeacherController extends Controller
     public function show(string $id)
     {
         //
-        $item = Teacher::findOrFail($id);
+        $item = Student::findOrFail($id);
         return $item;
     }
 
@@ -53,10 +55,13 @@ class TeacherController extends Controller
     public function edit(string $id)
     {
         //
-        $item = Teacher::findOrFail($id);
-        $item->email = 'hailu1414@gmail.com';
+        $item = Student::findOrFail($id);
+        $item->name = 'trhas kidu';
+        $item->email = 'trhas@example.com';
+        $item->age = 16;
+        $item->gender = 'female';
         $item->update();
-        return "Teacher updated successfully";
+        return "Student updated successfully";
     }
 
     /**
@@ -73,8 +78,8 @@ class TeacherController extends Controller
     public function destroy(string $id)
     {
         //
-        $item = Teacher::findOrFail($id);
+        $item = Student::findOrFail($id);
         $item->delete();
-        return "Teacher deleted successfully";
+        return "Student deleted successfully";
     }
 }

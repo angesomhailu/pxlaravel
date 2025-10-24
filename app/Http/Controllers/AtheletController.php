@@ -2,17 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Athelet;
 use Illuminate\Http\Request;
-use App\Models\Teacher;
 
-class TeacherController extends Controller
+class AtheletController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return Teacher::all();;
+        //
+        return Athelet::all();
     }
 
     /**
@@ -21,12 +22,13 @@ class TeacherController extends Controller
     public function create()
     {
         //
-        $item = new Teacher();
-        $item->name = 'John Doe';
-        $item->email = 'john@example.com';
-        $item->subject = 'physics';
+        $item = new Athelet();
+        $item->name = 'hagos aregay';
+        $item->age = 11;
+        $item->sport = 'football';
+        $item->team = 'liverpool';
         $item->save();
-        return "Teacher Added successfully";
+        return "Athelet created successfully!";
     }
 
     /**
@@ -43,7 +45,7 @@ class TeacherController extends Controller
     public function show(string $id)
     {
         //
-        $item = Teacher::findOrFail($id);
+        $item = Athelet::findOrFail($id);
         return $item;
     }
 
@@ -53,10 +55,13 @@ class TeacherController extends Controller
     public function edit(string $id)
     {
         //
-        $item = Teacher::findOrFail($id);
-        $item->email = 'hailu1414@gmail.com';
+        $item = Athelet::findOrFail($id);
+        $item->name = 'gemechusa';
+        $item->age = 33;
+        $item->sport = 'gymnastics';
+        $item->team = 'ferrari';
         $item->update();
-        return "Teacher updated successfully";
+        return "Athelet updated successfully!";
     }
 
     /**
@@ -73,8 +78,8 @@ class TeacherController extends Controller
     public function destroy(string $id)
     {
         //
-        $item = Teacher::findOrFail($id);
+        $item = Athelet::findOrFail($id);
         $item->delete();
-        return "Teacher deleted successfully";
+        return "Athelet deleted successfully!";
     }
 }
