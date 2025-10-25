@@ -24,7 +24,7 @@ Route::get('/students', [StudentsController::class, 'index']);
 Route::get('/add-student', [StudentsController::class, 'create']);
 Route::get('/show-student/{id}', [StudentsController::class, 'show']);
 Route::get('/edit-student/{id}', [StudentsController::class, 'edit']);
-Route::get('/delete-student/{id}', [StudentsController::class, 'destroy']);
+Route::get('/delete-student', [StudentsController::class, 'destroy']);
 //athelets routes
 Route::get('/athelets', [AtheletController::class, 'index']);
 Route::get('/add-athelet', [AtheletController::class, 'create']);

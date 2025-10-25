@@ -13,7 +13,7 @@ class StudentsController extends Controller
     public function index()
     {
         //
-        return Student::all();
+        return Student::withTrashed()->get();
     }
 
     /**
@@ -75,11 +75,11 @@ class StudentsController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy()
     {
         //
-        $item = Student::findOrFail($id);
-        $item->delete();
+        $item = Student::findOrFail(1);
+        $item->forceDelete();
         return "Student deleted successfully";
     }
 }
