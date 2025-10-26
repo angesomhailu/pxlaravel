@@ -37,3 +37,6 @@ Route::get('/add-cars', [CarController::class, 'addData']);
 Route::get('/get-cars', [CarController::class, 'getData']);
 Route::get('/update-cars', [CarController::class, 'updateData']);
 Route::get('/delete-cars', [CarController::class, 'deleteData']);
+Route::prefix('student')->controller(StudentsController::class)->group(function () {
+    Route::get('/', 'index');
+});

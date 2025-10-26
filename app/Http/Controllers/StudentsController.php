@@ -12,8 +12,8 @@ class StudentsController extends Controller
      */
     public function index()
     {
-        //
-        return Student::withTrashed()->get();
+        return view('students.index');
+        //return Student::withTrashed()->get();
     }
 
     /**
