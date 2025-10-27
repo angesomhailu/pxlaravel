@@ -10,9 +10,11 @@ class StudentsController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $students = Student::all();
+        $students = Student::when($request->search, function ($query) use ($request) {
+            return $query->whereAny(['name', 'email', 'age', 'gender'], $request->search);
+        })->get();
         return view('students.index', compact('students'));
         //return Student::withTrashed()->get();
     }

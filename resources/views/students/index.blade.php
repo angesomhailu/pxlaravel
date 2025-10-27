@@ -54,10 +54,12 @@
 <section>
      <h1>Welcome to the Student Portal</h1>
     <p>This is a simple Laravel Blade template.</p>
-    <div class="search">
-        <input type="text" placeholder="Search students...">
-        <button>Search</button>
-    </div>
+    <form action="{{ URL('student') }}" method="GET">
+        <div class="search">
+            <input type="text" placeholder="Search students..." id="search" name="search">
+            <button type="submit" >Search</button>
+        </div>
+    </form>
     <table>
         <h2>Student List</h2>
         <thead>
