@@ -1,10 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>student</title>
+@extends('layouts.app')
+@section('styles')
     <style>
     table {
         width: 100%;
@@ -17,18 +12,46 @@
         padding: 10px;
         text-align: left;
     }
+    
     th {
-        background-color: #f2f2f2;
+        background-color: #4CAF50;
         color:rgb(255, 255, 255);
     }
     tr:nth-child(even) {
         background-color: #f9f9f9;
     }
+    .search {
+        margin-bottom: 20px;
+        display: flex;
+        gap: 10px;
+        
+    }
+    .search input {
+        flex: 1;
+        padding: 8px;
+        font-size: 16px;
+    }
+    .search button {
+        padding: 8px 16px;
+        font-size: 16px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+    .search button:hover {
+        background-color: #45a049;
+    }
+    button {
+        margin-right: 5px;
+        padding: 5px 10px;
+        font-size: 14px;
+        cursor: pointer;
+    }
 </style>
-</head>
-<body>
+@endsection
+@section('content')
 <section>
-    <h2>Student List</h2>
      <h1>Welcome to the Student Portal</h1>
     <p>This is a simple Laravel Blade template.</p>
     <div class="search">
@@ -36,14 +59,34 @@
         <button>Search</button>
     </div>
     <table>
+        <h2>Student List</h2>
         <thead>
             <tr>
                 <th>ID</th>
                 <th>Name</th>
                 <th>Email</th>
-                <th>Enrollment Date</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Action</th>
             </tr>
         </thead>
+        <tbody>
+            @foreach ($students as $student)
+               <tr>
+                <td>{{ $student->id }}</td>
+                <td>{{ $student->name }}</td>
+                <td>{{ $student->email }}</td>
+                <td>{{$student->age}}</td>
+                <td>{{$student->gender}}</td>
+                <td>
+                    <button>View</button>
+                    <button>Edit</button>
+                    <button>Delete</button>
+                </td>
+            </tr> 
+            @endforeach
+            
+        </tbody>
     </table>
     </section>
-    </body>
+    @endsection
