@@ -10,9 +10,13 @@ class TeacherController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        return Teacher::all();
+        // return Teacher::all();
+        $teachers = Teacher::when($request->search, function ($query) use ($request) {
+            return $query->whereAny(['email'], $request->search);
+        })->get();
+        return view('teachers.index', compact('teachers'));
     }
     public function getData()
     {

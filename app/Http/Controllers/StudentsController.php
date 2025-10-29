@@ -13,7 +13,7 @@ class StudentsController extends Controller
     public function index(Request $request)
     {
         $students = Student::when($request->search, function ($query) use ($request) {
-            return $query->whereAny(['name', 'email', 'age', 'gender'], $request->search);
+            return $query->whereAny(['email'], $request->search);
         })->get();
         return view('students.index', compact('students'));
         //return Student::withTrashed()->get();

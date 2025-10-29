@@ -2,12 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Car;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class CarController extends Controller
 {
     //
+    public function index(Request $request)
+    {
+        $cars = Car::when($request->search, function ($query) use ($request) {
+            return $query->whereAny(['model'], $request->search);
+        })->get();
+        return view('cars.index', compact('cars'));
+    }
     public function addData()
     {
         DB::table('cars')->insert(
@@ -24,6 +32,7 @@ class CarController extends Controller
                     'year' => 2000,
                     'color' => 'yellow',
                 ],
+
             ]
 
         );
@@ -46,7 +55,7 @@ class CarController extends Controller
     }
     public function deleteData()
     {
-        DB::table('cars')->where('name', 'ford')->delete();
+        DB::table('cars')->delete();
         return "Data deleted successfully";
     }
 }

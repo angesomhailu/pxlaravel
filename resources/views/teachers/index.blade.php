@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('head')
-    <title>Students Page</title>
+    <title>Teachers Page</title>
 @endsection
 @section('styles')
     <style>
@@ -55,42 +55,38 @@
 @endsection
 @section('content')
 <section>
-     <h1>Welcome to the Student Portal</h1>
-    <p>This is a simple Laravel Blade template.</p>
-    <form action="{{ URL('student') }}" method="GET">
+     <h1>Welcome to the Teacher Portal</h1>
+    <form action="{{url('/teacher')}}" method="GET">
         <div class="search">
-            <input type="text" placeholder="Search students..." id="search" name="search">
-            <button type="submit" >Search</button>
+            <input type="text" placeholder="Search teachers..." id="search" name="search">
+            <button type="submit">Search</button>
         </div>
     </form>
     <table>
-        <h2>Student List</h2>
+        <h2>Teacher List</h2>
         <thead>
             <tr>
                 <th>ID</th>
                 <th>Name</th>
                 <th>Email</th>
-                <th>Age</th>
-                <th>Gender</th>
+                <th>Subject</th>
                 <th>Action</th>
             </tr>
         </thead>
         <tbody>
-            @foreach ($students as $student)
-               <tr>
-                <td>{{ $student->id }}</td>
-                <td>{{ $student->name }}</td>
-                <td>{{ $student->email }}</td>
-                <td>{{$student->age}}</td>
-                <td>{{$student->gender}}</td>
+            @foreach($teachers as $teacher)
+            <tr>
+                <td>{{ $teacher->id }}</td>
+                <td>{{ $teacher->name }}</td>
+                <td>{{ $teacher->email }}</td>
+                <td>{{ $teacher->subject }}</td>
                 <td>
                     <button>View</button>
                     <button>Edit</button>
                     <button>Delete</button>
                 </td>
-            </tr> 
+            </tr>
             @endforeach
-            
         </tbody>
     </table>
     </section>
