@@ -93,5 +93,8 @@
             
         </tbody>
     </table>
+    <div class="pagination">
+        {{$students->links('pagination::bootstrap-5')}}
+    </div>
     </section>
     @endsection

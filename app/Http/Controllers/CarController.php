@@ -13,6 +13,7 @@ class CarController extends Controller
     {
         $cars = Car::when($request->search, function ($query) use ($request) {
             return $query->whereAny(['model'], $request->search);
+            //return $query->where('model', 'like', '%' . $request->search . '%');
         })->get();
         return view('cars.index', compact('cars'));
     }

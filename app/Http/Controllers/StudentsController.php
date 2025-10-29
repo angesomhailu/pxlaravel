@@ -14,7 +14,7 @@ class StudentsController extends Controller
     {
         $students = Student::when($request->search, function ($query) use ($request) {
             return $query->whereAny(['email'], $request->search);
-        })->get();
+        })->paginate(10);
         return view('students.index', compact('students'));
         //return Student::withTrashed()->get();
     }
