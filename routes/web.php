@@ -20,6 +20,7 @@ Route::get('/delete-teacher/{id}', [TeacherController::class, 'destroy']);
 Route::get('/watch-teacher', [TeacherController::class, 'getData']);
 //student routes
 Route::get('/add-student', [StudentsController::class, 'create']);
+Route::get('/store-student', [StudentsController::class, 'store']);
 Route::get('/show-student/{id}', [StudentsController::class, 'show']);
 Route::get('/edit-student/{id}', [StudentsController::class, 'edit']);
 Route::get('/delete-student', [StudentsController::class, 'destroy']);
@@ -38,9 +39,12 @@ Route::get('/delete-cars', [CarController::class, 'deleteData']);
 // 
 Route::prefix('/student')->controller(StudentsController::class)->group(function () {
     Route::get('/', 'index');
+    Route::view('/create', 'students.create');
 });
 Route::prefix('/teacher')->controller(TeacherController::class)->group(function () {
     Route::get('/', 'index');
+    Route::view('/create', 'teachers.create');
+    Route::post('/create', 'create');
 });
 
 Route::prefix('/cars')->controller(CarController::class)->group(function () {

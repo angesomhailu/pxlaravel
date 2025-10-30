@@ -61,6 +61,7 @@
         <div class="search">
             <input type="text" placeholder="Search students..." id="search" name="search">
             <button type="submit" >Search</button>
+            <a class="btn btn-primary" href="{{ URL('student/create') }}">Add Student</a>
         </div>
     </form>
     <table>

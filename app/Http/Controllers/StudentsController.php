@@ -13,7 +13,7 @@ class StudentsController extends Controller
     public function index(Request $request)
     {
         $students = Student::when($request->search, function ($query) use ($request) {
-            return $query->whereAny(['email'], $request->search);
+            return $query->whereAny(['id', 'name', 'email', 'age', 'gender'], $request->search);
         })->paginate(10);
         return view('students.index', compact('students'));
         //return Student::withTrashed()->get();
@@ -40,7 +40,7 @@ class StudentsController extends Controller
     public function store(Request $request)
     {
         //
-        return view('contact');
+        return view('students.create');
     }
 
     /**

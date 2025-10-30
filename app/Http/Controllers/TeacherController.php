@@ -14,8 +14,8 @@ class TeacherController extends Controller
     {
         // return Teacher::all();
         $teachers = Teacher::when($request->search, function ($query) use ($request) {
-            return $query->whereAny(['email'], $request->search);
-        })->get();
+            return $query->whereAny(['name', 'email'], $request->search);
+        })->paginate(10);
         return view('teachers.index', compact('teachers'));
     }
     public function getData()
@@ -25,15 +25,15 @@ class TeacherController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
         //
         $item = new Teacher();
-        $item->name = 'John Doe';
-        $item->email = 'john@example.com';
-        $item->subject = 'physics';
+        $item->name = $request->name;
+        $item->email = $request->email;
+        $item->subject = $request->subject;
         $item->save();
-        return "Teacher Added successfully";
+        return redirect('/teacher');
     }
 
     /**

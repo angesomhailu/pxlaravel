@@ -60,6 +60,7 @@
         <div class="search">
             <input type="text" placeholder="Search teachers..." id="search" name="search">
             <button type="submit">Search</button>
+            <a class="btn btn-primary" href="{{ URL('teacher/create') }}">Add Teacher</a>
         </div>
     </form>
     <table>
@@ -89,5 +90,8 @@
             @endforeach
         </tbody>
     </table>
+    <div class="pagination" >
+  {{$teachers->links('pagination::bootstrap-5')}}
+    </div>
     </section>
     @endsection
