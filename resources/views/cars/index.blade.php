@@ -62,7 +62,7 @@ button:hover {
     <div>
         <h3>This is the Cars Page</h3>
     </div>
-    <form action="{{url('/cars')}}" method="GET">
+    <form>
         <div class="search-box">
              <input type="text" placeholder="search here for cars.... " name="search" id="search"/>
              <button>Search</button>

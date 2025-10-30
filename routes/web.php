@@ -31,22 +31,11 @@ Route::get('/show-athelet/{id}', [AtheletController::class, 'show']);
 Route::get('/edit-athelet/{id}', [AtheletController::class, 'edit']);
 Route::get('/delete-athelet/{id}', [AtheletController::class, 'destroy']);
 Route::get('/store-athelet', [AtheletController::class, 'store']);
-//routes of cars
-Route::get('/add-cars', [CarController::class, 'addData']);
-Route::get('/get-cars', [CarController::class, 'getData']);
-Route::get('/update-cars', [CarController::class, 'updateData']);
-Route::get('/delete-cars', [CarController::class, 'deleteData']);
-// 
 Route::prefix('/student')->controller(StudentsController::class)->group(function () {
     Route::get('/', 'index');
     Route::view('/create', 'students.create');
 });
 Route::prefix('/teacher')->controller(TeacherController::class)->group(function () {
     Route::get('/', 'index');
-    Route::view('/create', 'teachers.create');
     Route::post('/create', 'create');
-});
-
-Route::prefix('/cars')->controller(CarController::class)->group(function () {
-    Route::get('/', 'index');
 });
