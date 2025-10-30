@@ -53,7 +53,15 @@ button {
 button:hover {
     background-color: #0056b3;
 }
-
+.car-button {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: #28a745;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    margin-left: 10px;
+}
 </style>
 
 @endsection
@@ -62,11 +70,13 @@ button:hover {
     <div>
         <h3>This is the Cars Page</h3>
     </div>
-    <form>
+    <form action="{{URL('/cars')}}" method="GET">
         <div class="search-box">
-             <input type="text" placeholder="search here for cars.... " name="search" id="search"/>
-             <button>Search</button>
+             <input type="text" placeholder="search here for cas.... " name="search" id="search"/>
+             <button type="submit">Search</button>
+             <a class="car-button" href="{{URL('/cars/create')}}">Add Car</a>
         </div>
+
     </form>
     <div>
         <table>

@@ -37,5 +37,12 @@ Route::prefix('/student')->controller(StudentsController::class)->group(function
 });
 Route::prefix('/teacher')->controller(TeacherController::class)->group(function () {
     Route::get('/', 'index');
+    Route::view('/create', 'teachers.create');
+    Route::post('/create', 'create');
+});
+//cars routes
+Route::prefix('/cars')->controller(CarController::class)->group(function () {
+    Route::get('/', 'index');
+    Route::view('/create', 'cars.create');
     Route::post('/create', 'create');
 });

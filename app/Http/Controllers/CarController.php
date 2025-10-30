@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Car;
 use Illuminate\Http\Request;
 
 class CarController extends Controller
@@ -9,17 +10,29 @@ class CarController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         //
+        $cars = Car::when($request->search, function ($query) use ($request) {
+            return $query->whereAny(['model', 'name'], $request->search);
+        })->get();
+        return view('cars.index', compact('cars'));
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
         //
+        $item = new Car();
+        $item->name = $request->name;
+        $item->model = $request->model;
+        $item->year = $request->year;
+        $item->color = $request->color;
+        $item->save();
+
+        return "the car is added succecssfully";
     }
 
     /**

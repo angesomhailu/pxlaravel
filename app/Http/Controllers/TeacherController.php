@@ -33,7 +33,7 @@ class TeacherController extends Controller
         $item->email = $request->email;
         $item->subject = $request->subject;
         $item->save();
-        return redirect('/teacher');
+        return redirect('teacher');
     }
 
     /**
