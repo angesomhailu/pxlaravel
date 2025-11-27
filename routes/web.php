@@ -26,6 +26,7 @@ Route::prefix('/teacher')->controller(TeacherController::class)->group(function 
     Route::get('/edit/{id}', 'edit');
     Route::post('/edit/{id}', 'update');
     Route::get('/delete/{id}', 'destroy');
+    Route::get('/show/{id}', 'show');
 });
 //students routes
 Route::prefix('/student')->controller(StudentController::class)->group(function () {
@@ -35,4 +36,5 @@ Route::prefix('/student')->controller(StudentController::class)->group(function 
     Route::get('/edit/{id}', 'edit');
     Route::post('/edit/{id}', 'update');
     Route::get('/delete/{id}', 'destroy');
+    Route::get('/show/{id}', 'show');
 });

@@ -45,7 +45,7 @@
             <label for="subject">Subject:</label>
             <input type="text" id="subject" name="subject" required value='{{$teachers->subject}}'>
         </div>  
-        <button type="submit">Update Teacher</button>
+        <button type="submit" onclick="return confirm('The teacher updated successfully')">Update Teacher</button>
     </form>
 </section>
 @endsection

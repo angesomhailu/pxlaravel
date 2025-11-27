@@ -42,6 +42,8 @@ class TeacherController extends Controller
     public function store(Request $request)
     {
         //
+
+
     }
 
     /**
@@ -50,7 +52,8 @@ class TeacherController extends Controller
     public function show(string $id)
     {
         //
-
+        $teachers = Teacher::findOrFail($id);
+        return view('teachers.show')->with('teachers', $teachers);
     }
 
     /**

@@ -84,7 +84,7 @@
                 <td>{{ $student->date_of_birth }}</td>
                 <td>{{ $student->department }}</td>
                 <td>
-                    <a class="btn btn-primary" href="#">View</a>
+                    <a class="btn btn-primary" href="{{url('/student/show',$student->id)}}">View</a>
                     <a class="btn btn-primary" href="{{url('/student/edit',$student->id)}}"
                         onclick="return confirm('Are you sure you want to edit this student?')">Edit</a>
                     <a class="btn btn-primary" href="{{url('/student/delete',$student->id)}}"
