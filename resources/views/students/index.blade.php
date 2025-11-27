@@ -87,8 +87,11 @@
                     <a class="btn btn-primary" href="{{url('/student/show',$student->id)}}">View</a>
                     <a class="btn btn-primary" href="{{url('/student/edit',$student->id)}}"
                         onclick="return confirm('Are you sure you want to edit this student?')">Edit</a>
-                    <a class="btn btn-primary" href="{{url('/student/delete',$student->id)}}"
-                        onclick="return confirm('Are you sure you want to delete this student?')">Delete</a>
+                        <form action="{{url('/student/delete',$student->id)}}" method="POST" style="display:inline">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" onclick="return confirm('Are you sure you want to delete this student?')">Delete</button>
+                        </form>
                 </td>
             </tr>
             @endforeach
