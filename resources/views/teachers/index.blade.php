@@ -85,7 +85,7 @@
                 <td>
                     <a class="btn btn-primary" href="#">View</a>
                     <a class="btn btn-primary" href="{{url('/teacher/edit',$teacher->id)}}">Edit</a>
-                    <a class="btn btn-primary" href="#">Delete</a>
+                    <a class="btn btn-primary" href="{{url('/teacher/delete',$teacher->id)}}" alert="Are you sure you want to delete this teacher?">Delete</a>
                 </td>
             </tr>
             @endforeach

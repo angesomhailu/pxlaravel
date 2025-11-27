@@ -83,8 +83,8 @@ class TeacherController extends Controller
     public function destroy(string $id)
     {
         //
-        $item = Teacher::findOrFail($id);
-        $item->delete();
-        return "Teacher deleted successfully";
+        $teachers = Teacher::findOrFail($id);
+        $teachers->delete();
+        return redirect('teacher');
     }
 }

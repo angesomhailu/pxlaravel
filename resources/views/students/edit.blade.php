@@ -36,7 +36,7 @@
         @csrf
         <div>
             <label for="fullname">Full Name:</label>
-            <input type="text" id="fullname" name="fullname" required value="{{$students->$fullname}}">
+            <input type="text" id="fullname" name="fullname" required value="{{$students->fullname}}">
         </div>
         <div>
             <label for="email">Email:</label>
