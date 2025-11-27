@@ -84,8 +84,10 @@
                 <td>{{ $teacher->subject }}</td>
                 <td>
                     <a class="btn btn-primary" href="#">View</a>
-                    <a class="btn btn-primary" href="{{url('/teacher/edit',$teacher->id)}}">Edit</a>   
-                    <a class="btn btn-primary" href="{{url('/teacher/delete',$teacher->id)}}" onclick="return confirm('Are you sure you want to delete this teacher?')">Delete</a>
+                    <a class="btn btn-primary" href="{{url('/teacher/edit',$teacher->id)}}"
+                        onclick="return confirm('Are you sure you want to edit this teacher?')">Edit</a>   
+                    <a class="btn btn-primary" href="{{url('/teacher/delete',$teacher->id)}}" 
+                        onclick="return confirm('Are you sure you want to delete this teacher?')">Delete</a>
                 </td>
             </tr>
             @endforeach
