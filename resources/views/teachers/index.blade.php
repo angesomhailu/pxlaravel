@@ -55,6 +55,7 @@
 </style>
 @endsection
 @section('content')
+   
 <section>
      <h1>Welcome to the Teacher Portal</h1>
     <form action="{{url('/teacher')}}" method="GET">

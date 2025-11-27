@@ -29,21 +29,30 @@
     </style>
 @endsection
 @section('content')
+@if ($errors->any())
+<div class="alert alert-danger">
+    <ul>
+        @foreach ($errors->all() as $error)
+            <li>{{$error}}</li>
+        @endforeach
+    </ul>
+</div>
+@endif 
 <section>
     <h1>Create a New Teacher</h1>
     <form action="{{url('/teacher/create')}}" method="POST">
         @csrf
         <div>
             <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
+            <input type="text" id="name" name="name" >
         </div>
         <div>
             <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
+            <input type="email" id="email" name="email" >
         </div>
         <div>
             <label for="subject">Subject:</label>
-            <input type="text" id="subject" name="subject" required>
+            <input type="text" id="subject" name="subject" >
         </div>  
         <button type="submit">Create Teacher</button>
     </form>

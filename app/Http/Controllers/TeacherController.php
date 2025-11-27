@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Teacher;
+use App\Http\Requests\TeacherRequest;
 
 class TeacherController extends Controller
 {
@@ -12,20 +13,15 @@ class TeacherController extends Controller
      */
     public function index(Request $request)
     {
-        // return Teacher::all();
         $teachers = Teacher::when($request->search, function ($query) use ($request) {
             return $query->whereAny(['name', 'email'], $request->search);
         })->paginate(10);
         return view('teachers.index')->with('teachers', $teachers);
     }
-    public function getData()
-    {
-        return Teacher::find(4);
-    }
     /**
      * Show the form for creating a new resource.
      */
-    public function create(Request $request)
+    public function create(TeacherRequest $request)
     {
         //
         $item = new Teacher();
