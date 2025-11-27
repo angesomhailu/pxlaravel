@@ -16,7 +16,7 @@ class TeacherController extends Controller
         $teachers = Teacher::when($request->search, function ($query) use ($request) {
             return $query->whereAny(['name', 'email'], $request->search);
         })->paginate(10);
-        return view('teachers.index', compact('teachers'));
+        return view('teachers.index')->with('teachers', $teachers);
     }
     public function getData()
     {
@@ -50,8 +50,7 @@ class TeacherController extends Controller
     public function show(string $id)
     {
         //
-        $item = Teacher::findOrFail($id);
-        return $item;
+
     }
 
     /**
@@ -60,10 +59,8 @@ class TeacherController extends Controller
     public function edit(string $id)
     {
         //
-        $item = Teacher::findOrFail($id);
-        $item->email = 'hailu1414@gmail.com';
-        $item->update();
-        return "Teacher updated successfully";
+        $teachers = Teacher::findOrFail($id);
+        return view('teachers.edit')->with('teachers', $teachers);
     }
 
     /**
@@ -72,6 +69,12 @@ class TeacherController extends Controller
     public function update(Request $request, string $id)
     {
         //
+        $teachers = Teacher::findOrFail($id);
+        $teachers->name = $request->name;
+        $teachers->email = $request->email;
+        $teachers->subject = $request->subject;
+        $teachers->update();
+        return redirect('teacher');
     }
 
     /**

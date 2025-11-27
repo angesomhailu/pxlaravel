@@ -17,10 +17,12 @@ class StudentFactory extends Factory
     public function definition(): array
     {
         return [
-            "name" => $this->faker->name(),
-            "email" => $this->faker->unique()->safeEmail(),
-            "age" => $this->faker->numberBetween(18, 25),
-            "gender" => $this->faker->randomElement(['male', 'female']),
+            //
+            'fullname' => $this->faker->name(),
+            'email' => $this->faker->unique()->safeEmail(),
+            'date_of_birth' => $this->faker->date(),
+            'department' => $this->faker->randomElement(['software', 'chemical', 'civil', 'medicine', 'statistics']),
+
         ];
     }
 }

@@ -31,7 +31,7 @@
 @section('content')
 <section>
     <h1>Create a New Teacher</h1>
-    <form action="{{URL('/teacher/create')}}" method="POST">
+    <form action="{{url('/teacher/create')}}" method="POST">
         @csrf
         <div>
             <label for="name">Name:</label>

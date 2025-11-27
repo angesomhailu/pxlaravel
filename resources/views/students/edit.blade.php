@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('head')
-    <title>Add Student</title>
+    <title>Edit Student</title>
 @endsection
 @section('styles')
 <style>
@@ -31,25 +31,25 @@
 @endsection
 @section('content')
 <section>
-     <h2>Please Add Student</h2>
-    <form action="{{url('/student/create')}}" method="POST">
+     <h2>Please Edit Student</h2>
+    <form action="{{url('/student/edit',$students->id)}}" method="POST">
         @csrf
         <div>
             <label for="fullname">Full Name:</label>
-            <input type="text" id="fullname" name="fullname" required>
+            <input type="text" id="fullname" name="fullname" required value="{{$students->$fullname}}">
         </div>
         <div>
             <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
+            <input type="email" id="email" name="email" required value="{{$students->email}}">
         </div>
         <div>
             <label for="date_of_birth">Date of Birth:</label>
-            <input type="date" id="date_of_birth" name="date_of_birth" required>
+            <input type="date" id="date_of_birth" name="date_of_birth" required value="{{$students->date_of_birth}}">
         </div>
         <div>
             <label for="department">Department:</label>
-            <input type="text" id="department" name="department" required>
+            <input type="text" id="department" name="department" required value="{{$students->department}}">
         </div>
-        <button type="submit">Add Student</button>
+        <button type="submit">Update Student</button>
     </section>
     @endsection

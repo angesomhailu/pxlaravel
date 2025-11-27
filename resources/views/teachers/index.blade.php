@@ -51,6 +51,7 @@
         font-size: 14px;
         cursor: pointer;
     }
+
 </style>
 @endsection
 @section('content')
@@ -60,7 +61,7 @@
         <div class="search">
             <input type="text" placeholder="Search teachers..." id="search" name="search">
             <button type="submit">Search</button>
-            <a class="btn btn-primary" href="{{ URL('teacher/create') }}">Add Teacher</a>
+            <a class="btn btn-primary" href="{{ url('/teacher/create') }}">Add Teacher</a>
         </div>
     </form>
     <table>
@@ -82,9 +83,9 @@
                 <td>{{ $teacher->email }}</td>
                 <td>{{ $teacher->subject }}</td>
                 <td>
-                    <button>View</button>
-                    <button>Edit</button>
-                    <button>Delete</button>
+                    <a class="btn btn-primary" href="#">View</a>
+                    <a class="btn btn-primary" href="{{url('/teacher/edit',$teacher->id)}}">Edit</a>
+                    <a class="btn btn-primary" href="#">Delete</a>
                 </td>
             </tr>
             @endforeach

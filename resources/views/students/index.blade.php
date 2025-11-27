@@ -56,12 +56,11 @@
 @section('content')
 <section>
      <h1>Welcome to the Student Portal</h1>
-    <p>This is a simple Laravel Blade template.</p>
-    <form action="{{ URL('student') }}" method="GET">
+    <form action="{{url('/student')}}" method="GET">
         <div class="search">
             <input type="text" placeholder="Search students..." id="search" name="search">
-            <button type="submit" >Search</button>
-            <a class="btn btn-primary" href="{{ URL('student/create') }}">Add Student</a>
+            <button type="submit">Search</button>   
+            <a class="btn btn-primary" href="{{ url('/student/create') }}">Add Student</a>
         </div>
     </form>
     <table>
@@ -69,33 +68,32 @@
         <thead>
             <tr>
                 <th>ID</th>
-                <th>Name</th>
+                <th>Full Name</th>
                 <th>Email</th>
-                <th>Age</th>
-                <th>Gender</th>
+                <th>Date_of_Birth</th>
+                <th>Department</th>
                 <th>Action</th>
             </tr>
         </thead>
         <tbody>
-            @foreach ($students as $student)
-               <tr>
+            @foreach($students as $student)
+            <tr>
                 <td>{{ $student->id }}</td>
-                <td>{{ $student->name }}</td>
+                <td>{{ $student->fullname }}</td>
                 <td>{{ $student->email }}</td>
-                <td>{{$student->age}}</td>
-                <td>{{$student->gender}}</td>
+                <td>{{ $student->date_of_birth }}</td>
+                <td>{{ $student->department }}</td>
                 <td>
-                    <button>View</button>
-                    <button>Edit</button>
-                    <button>Delete</button>
+                    <a class="btn btn-primary" href="#">View</a>
+                    <a class="btn btn-primary" href="{{url('/student/edit',$student->id)}}">Edit</a>
+                    <a class="btn btn-primary" href="#">Delete</a>
                 </td>
-            </tr> 
+            </tr>
             @endforeach
-            
         </tbody>
     </table>
-    <div class="pagination">
-        {{$students->links('pagination::bootstrap-5')}}
+    <div class="pagination" >
+  {{$students->links('pagination::bootstrap-5')}}
     </div>
     </section>
     @endsection
