@@ -29,6 +29,15 @@
 
 </style>
 @endsection
+@if ($errors->any())
+<div class="alert alert-danger">
+<ul>
+    @foreach ($errors->all() as $error)
+        <li>{{$error}}</li>
+    @endforeach
+</ul>
+</div>
+@endif    
 @section('content')
 <section>
      <h2>Please Add Student</h2>
@@ -36,19 +45,19 @@
         @csrf
         <div>
             <label for="fullname">Full Name:</label>
-            <input type="text" id="fullname" name="fullname" required>
+            <input type="text" id="fullname" name="fullname" >
         </div>
         <div>
             <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
+            <input type="email" id="email" name="email" >
         </div>
         <div>
             <label for="date_of_birth">Date of Birth:</label>
-            <input type="date" id="date_of_birth" name="date_of_birth" required>
+            <input type="date" id="date_of_birth" name="date_of_birth" >
         </div>
         <div>
             <label for="department">Department:</label>
-            <input type="text" id="department" name="department" required>
+            <input type="text" id="department" name="department" >
         </div>
         <button type="submit">Add Student</button>
     </section>

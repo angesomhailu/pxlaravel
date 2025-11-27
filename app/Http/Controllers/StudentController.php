@@ -23,6 +23,12 @@ class StudentController extends Controller
 
     public function create(Request $request)
     {
+        $request->validate([
+            'fullname' => 'required|string|max:255',
+            'email' => 'required|email|unique:students,email',
+            'date_of_birth' => 'required|date',
+            'department' => 'required|string',
+        ]);
         $item = new Student();
         $item->fullname = $request->fullname;
         $item->email = $request->email;
