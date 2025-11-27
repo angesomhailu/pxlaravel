@@ -34,4 +34,5 @@ Route::prefix('/student')->controller(StudentController::class)->group(function 
     Route::post('/create', 'create');
     Route::get('/edit/{id}', 'edit');
     Route::post('/edit/{id}', 'update');
+    Route::get('/delete/{id}', 'destroy');
 });

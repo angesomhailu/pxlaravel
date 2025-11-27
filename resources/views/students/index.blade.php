@@ -86,7 +86,7 @@
                 <td>
                     <a class="btn btn-primary" href="#">View</a>
                     <a class="btn btn-primary" href="{{url('/student/edit',$student->id)}}">Edit</a>
-                    <a class="btn btn-primary" href="#">Delete</a>
+                    <a class="btn btn-primary" href="{{url('/student/delete',$student->id)}}">Delete</a>
                 </td>
             </tr>
             @endforeach
