@@ -28,25 +28,16 @@
     }
 
 </style>
-@endsection
-@if ($errors->any())
-<div class="alert alert-danger">
-<ul>
-    @foreach ($errors->all() as $error)
-        <li>{{$error}}</li>
-    @endforeach
-</ul>
-</div>
-@endif    
+@endsection 
 @section('content')
-    @if ($errors->any())
-<div class="alert alert-danger">
+@if ($errors->any())
+   <div class="alert alert-danger">
     <ul>
         @foreach ($errors->all() as $error)
             <li>{{$error}}</li>
         @endforeach
     </ul>
-</div>
+   </div>
 @endif 
 <section>
      <h2>Please Add Student</h2>
