@@ -69,6 +69,7 @@
         <thead>
             <tr>
                 <th> ID</th>
+                <th> Image</th>
                 <th> Name</th>
                 <th> Email</th>
                 <th> Club</th>
@@ -80,6 +81,9 @@
             @foreach ($players as $player)
                 <tr>
                     <td>{{$player->id}}</td>
+                    <td>
+                        <img src='{{asset('storage/'.$player->image)}}' width="50" height="50" />
+                    </td>
                     <td>{{$player->name}}</td>
                     <td>{{$player->email}}</td>
                     <td>{{$player->club}}</td>

@@ -27,6 +27,7 @@ class PlayersRequest extends FormRequest
             'email' => 'required|email|unique:players,email',
             'club' => 'required|string|max:255',
             'country' => 'required|string|max:255',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
     }
 
@@ -45,6 +46,9 @@ class PlayersRequest extends FormRequest
             'country.required' => 'The country field is required.',
             'country.string' => 'The country must be a string.',
             'country.max' => 'The country may not be greater than 255 characters.',
+            'image.image' => 'The file must be an image.',
+            'image.mimes' => 'The image must be a file of type: jpeg, png, jpg, gif, svg.',
+            'image.max' => 'The image may not be greater than 2048 kilobytes.',
         ];
     }
 }

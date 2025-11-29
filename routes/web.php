@@ -39,17 +39,7 @@ Route::prefix('/student')->controller(StudentController::class)->group(function 
     Route::delete('/delete/{id}', 'destroy');
     Route::get('/show/{id}', 'show');
 });
-
-
-
-
-
-
-
-
-
-
-
+//players routes
 Route::prefix('/player')->controller(PlayersController::class)->group(function () {
     Route::get('/', 'index');
     Route::view('/create', 'players.create');

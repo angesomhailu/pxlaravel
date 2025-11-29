@@ -52,17 +52,19 @@ h2 {
     @endif
 <section>
 
-<form action="{{url('/player/create')}}" method="POST">
+<form action="{{url('/player/create')}}" method="POST" enctype="multipart/form-data">
     @csrf
     <h2>Create New Player</h2>
      <label for="name">Player Name:</label>
-    <input type="text" id="name" name="name"><br>
+    <input type="text" id="name" name="name" value="{{ old('name') }}"><br>
      <label for="email">Email:</label>
-    <input type="email" id="email" name="email"><br>
+    <input type="email" id="email" name="email" value="{{ old('email') }}"><br>
      <label for="club">Club:</label>
-    <input type="text" id="club" name="club"><br>
+    <input type="text" id="club" name="club" value="{{ old('club') }}"><br>
      <label for="country">Country:</label>
-    <input type="text" id="country" name="country"><br>
+    <input type="text" id="country" name="country" value="{{ old('country') }}"><br>
+    <label for="image">Image:</label>
+    <input type="file" id="image" name="image"  accept="image/*"><br>
     <button type="submit">Create Player</button>
 </form>
 </section>

@@ -26,11 +26,17 @@ class PlayersController extends Controller
     public function create(PlayersRequest $request)
     {
         //
+        $imagePath = '';
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('photos', 'public');
+        }
+
         $players = new Players();
         $players->name = $request->name;
         $players->email = $request->email;
         $players->club = $request->club;
         $players->country = $request->country;
+        $players->image = $imagePath;
         $players->save();
         return redirect('player');
     }
