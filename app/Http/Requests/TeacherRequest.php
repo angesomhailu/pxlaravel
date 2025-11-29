@@ -25,7 +25,7 @@ class TeacherRequest extends FormRequest
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:teachers,email',
             'subject' => 'required|string|max:255',
-
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             //
         ];
     }
@@ -38,6 +38,9 @@ class TeacherRequest extends FormRequest
             'email.unique' => 'This email is already taken',
             'subject.required' => 'Subject is required',
             'subject.string' => 'Subject must be a string',
+            'image.image' => 'The file must be an image',
+            'image.mimes' => 'The image must be a file of type: jpeg, png, jpg, gif, svg',
+            'image.max' => 'The image size must not exceed 2048 kilobytes',
         ];
     }
 }

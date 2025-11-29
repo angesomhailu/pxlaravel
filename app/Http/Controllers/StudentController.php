@@ -24,11 +24,16 @@ class StudentController extends Controller
 
     public function create(StudentRequest $request)
     {
+        $imagePath = '';
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('photos', 'public');
+        }
         $item = new Student();
         $item->fullname = $request->fullname;
         $item->email = $request->email;
         $item->date_of_birth = $request->date_of_birth;
         $item->department = $request->department;
+        $item->image = $imagePath;
         $item->save();
         return redirect('student');
     }

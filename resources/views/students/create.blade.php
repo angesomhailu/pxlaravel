@@ -41,23 +41,27 @@
 @endif 
 <section>
      <h2>Please Add Student</h2>
-    <form action="{{url('/student/create')}}" method="POST">
+    <form action="{{url('/student/create')}}" method="POST" enctype="multipart/form-data">
         @csrf
         <div>
             <label for="fullname">Full Name:</label>
-            <input type="text" id="fullname" name="fullname" >
+            <input type="text" id="fullname" name="fullname" value="{{old('fullname')}}">
         </div>
         <div>
             <label for="email">Email:</label>
-            <input type="email" id="email" name="email" >
+            <input type="email" id="email" name="email" value="{{old('email')}}">
         </div>
         <div>
             <label for="date_of_birth">Date of Birth:</label>
-            <input type="date" id="date_of_birth" name="date_of_birth" >
+            <input type="date" id="date_of_birth" name="date_of_birth" value="{{old('date_of_birth')}}">
         </div>
         <div>
             <label for="department">Department:</label>
-            <input type="text" id="department" name="department" >
+            <input type="text" id="department" name="department" value="{{old('department')}}">
+        </div>
+        <div>
+            <label for="image">Image:</label>
+            <input type="file" id="image" name="image" accept="image/*" >
         </div>
         <button type="submit">Add Student</button>
     </section>

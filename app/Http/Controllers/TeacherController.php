@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Teacher;
 use App\Http\Requests\TeacherRequest;
+use Illuminate\Support\Facades\Storage;
 
 class TeacherController extends Controller
 {
@@ -24,10 +25,15 @@ class TeacherController extends Controller
     public function create(TeacherRequest $request)
     {
         //
+        $imagePath = '';
+        if ($request->hasFile('image')) {
+            $imagePath  = $request->file('image')->store('photos', 'public');
+        }
         $item = new Teacher();
         $item->name = $request->name;
         $item->email = $request->email;
         $item->subject = $request->subject;
+        $item->image = $imagePath;
         $item->save();
         return redirect('teacher');
     }
@@ -83,6 +89,9 @@ class TeacherController extends Controller
     {
         //
         $teachers = Teacher::findOrFail($id);
+        if ($teachers->image) {
+            Storage::disk('public')->delete($teachers->image);
+        }
         $teachers->delete();
         return redirect('teacher');
     }

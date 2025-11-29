@@ -27,6 +27,7 @@ class StudentRequest extends FormRequest
             'email' => 'required|email|unique:students,email',
             'date_of_birth' => 'required|date',
             'department' => 'required|string',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
     }
     public function messages(): array
@@ -40,6 +41,9 @@ class StudentRequest extends FormRequest
             'date_of_birth.date' => 'Please provide a valid date',
             'department.required' => 'Department is required',
             'department.string' => 'Department must be a string',
+            'image.image' => 'The file must be an image',
+            'image.mimes' => 'The image must be a file of type: jpeg, png, jpg, gif, svg',
+            'image.max' => 'The image size must not exceed 2048 kilobytes',
         ];
     }
 }

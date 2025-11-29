@@ -40,20 +40,24 @@
 @endif 
 <section>
     <h1>Create a New Teacher</h1>
-    <form action="{{url('/teacher/create')}}" method="POST">
+    <form action="{{url('/teacher/create')}}" method="POST" enctype="multipart/form-data">
         @csrf
         <div>
             <label for="name">Name:</label>
-            <input type="text" id="name" name="name" >
+            <input type="text" id="name" name="name" value="{{ old('name') }}" >
         </div>
         <div>
             <label for="email">Email:</label>
-            <input type="email" id="email" name="email" >
+            <input type="email" id="email" name="email" value="{{ old('email') }}" >
         </div>
         <div>
             <label for="subject">Subject:</label>
-            <input type="text" id="subject" name="subject" >
+            <input type="text" id="subject" name="subject" value="{{ old('subject') }}" >
         </div>  
+        <div>
+            <label for="image">Image:</label>
+            <input type="file" id="image" name="image" accept="image/*" >
+        </div> 
         <button type="submit">Create Teacher</button>
     </form>
 </section>
