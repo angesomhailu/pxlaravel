@@ -54,8 +54,7 @@
 
 </style>
 @endsection
-@section('content')
-   
+@section('content')  
 <section>
      <h1>Welcome to the Teacher Portal</h1>
     <form action="{{url('/teacher')}}" method="GET">
@@ -86,9 +85,12 @@
                 <td>
                     <a class="btn btn-primary" href="{{url('/teacher/show',$teacher->id)}}">View</a>
                     <a class="btn btn-primary" href="{{url('/teacher/edit',$teacher->id)}}"
-                        onclick="return confirm('Are you sure you want to edit this teacher?')">Edit</a>   
-                    <a class="btn btn-primary" href="{{url('/teacher/delete',$teacher->id)}}" 
-                        onclick="return confirm('Are you sure you want to delete this teacher?')">Delete</a>
+                        onclick="return confirm('Are you sure you want to edit this teacher?')">Edit</a>  
+                        <form action="{{url('/teacher/delete',$teacher->id)}}" method="POST" style="display:inline;">
+                            @csrf
+                            @method('DELETE')
+                            <button class="btn-danger" onclick="return confirm('Are you sure you want to delete this teacher?')">Delete</button>
+                        </form> 
                 </td>
             </tr>
             @endforeach

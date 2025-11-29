@@ -25,14 +25,8 @@
         margin: 0 15px;
         text-decoration: none;
     }
-    footer {
-        background-color: #333;
-        color: white;
-        text-align: center;
-        padding: 10px;
-        position: fixed;
-        bottom: 0;
-        width: 100%;
+    nav a:hover {
+        text-decoration: underline;
     }
     
     </style>
@@ -48,8 +42,6 @@
         @yield('content') 
 </main>
 </body>
- <footer>
-    <p>&copy; 2024 Your Company. All rights reserved.</p>
- </footer>
+ 
   @yield('scripts')
 </html>
