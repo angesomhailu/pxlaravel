@@ -82,7 +82,9 @@
                 <tr>
                     <td>{{$player->id}}</td>
                     <td>
+                        @if($player->image)
                         <img src='{{asset('storage/'.$player->image)}}' width="50" height="50" />
+                        @endif
                     </td>
                     <td>{{$player->name}}</td>
                     <td>{{$player->email}}</td>

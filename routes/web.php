@@ -6,7 +6,7 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\PlayersController;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 Route::fallback(function () {
     return view('notfoundpage');
