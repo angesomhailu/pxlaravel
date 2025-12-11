@@ -6,6 +6,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Models\Student;
+use App\Models\Teacher;
+use App\Models\Players;
 
 class User extends Authenticatable
 {
@@ -44,5 +47,18 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function student()
+    {
+        return $this->hasOne(Student::class, 'id');
+    }
+    public function teacher()
+    {
+        return $this->hasOne(Teacher::class, 'id');
+    }
+    public function player()
+    {
+        return $this->hasOne(Players::class, 'id');
     }
 }

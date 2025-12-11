@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\PlayersController;
+use App\Http\Controllers\UserController;
 
 Route::get('/', function () {
     return view('home');
@@ -18,7 +19,6 @@ Route::get('/contact', function () {
     return view('contact');
 });
 
-Route::get('/edit/{id}', [TeacherController::class, 'edit']);
 //teachers routes
 Route::prefix('/teacher')->controller(TeacherController::class)->group(function () {
     Route::get('/', 'index');
@@ -48,4 +48,7 @@ Route::prefix('/player')->controller(PlayersController::class)->group(function (
     Route::post('/edit/{id}', 'update');
     Route::get('/show/{id}', 'show');
     Route::delete('/delete/{id}', 'destroy');
+});
+Route::prefix('/users')->controller(UserController::class)->group(function () {
+    Route::get('/', 'index');
 });
