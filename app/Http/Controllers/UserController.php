@@ -13,7 +13,7 @@ class UserController extends Controller
     public function index()
     {
         //
-        $users = User::with(['player', 'student'])->get();
+        $users = User::with('student')->get();
         return $users;
     }
 
