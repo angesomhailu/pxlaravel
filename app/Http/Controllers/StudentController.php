@@ -18,6 +18,8 @@ class StudentController extends Controller
             return $query->whereAny('email', $request->search);
         })->paginate(10);
         return view('students.index', compact('students'));
+        // $students = Student::with('teacher')->get();
+        // return  $students;
     }
 
 
