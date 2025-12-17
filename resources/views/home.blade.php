@@ -95,7 +95,7 @@
     <div class="container">
 
         {{-- Auth navigation --}}
-        @if (Route::has('login'))
+        {{-- @if (Route::has('login'))
             <nav class="auth-nav">
                 @auth
                     <a href="{{ url('/dashboard') }}" class="auth-link">Dashboard</a>
@@ -107,7 +107,7 @@
                     @endif
                 @endauth
             </nav>
-        @endif
+        @endif --}}
         <div class="logo">Ange Bingo</div>
         <div class="tagline">Fast, fun, and fair offline bingo — play alone or with friends.</div>
 

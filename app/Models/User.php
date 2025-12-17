@@ -6,7 +6,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use App\Models\Student;
+use App\Models\Group;
+use App\Models\GroupUser;
 
 class User extends Authenticatable
 {
@@ -23,7 +24,7 @@ class User extends Authenticatable
         'email',
         'password',
     ];
-
+    protected $primaryKey = 'owner_id';
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -46,8 +47,11 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
-    public function student()
+    public function groups()
     {
-        return $this->hasOne(Student::class, 'id');
+        return $this->belongsToMany(Group::class)
+            ->using(GroupUser::class)
+            ->withPivot('active')
+            ->withTimestamps();
     }
 }

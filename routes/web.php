@@ -4,19 +4,14 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\PlayersController;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\UsersController;
+use App\Http\Controllers\GroupController;
 
 Route::get('/', function () {
     return view('home');
 });
 Route::fallback(function () {
     return view('notfoundpage');
-});
-Route::get('/about', function () {
-    return view('about');
-});
-Route::get('/contact', function () {
-    return view('contact');
 });
 
 //teachers routes
@@ -49,6 +44,9 @@ Route::prefix('/player')->controller(PlayersController::class)->group(function (
     Route::get('/show/{id}', 'show');
     Route::delete('/delete/{id}', 'destroy');
 });
-Route::prefix('/users')->controller(UserController::class)->group(function () {
+Route::prefix('/users')->controller(UsersController::class)->group(function () {
+    Route::get('/', 'index');
+});
+Route::prefix('/groups')->controller(GroupController::class)->group(function () {
     Route::get('/', 'index');
 });

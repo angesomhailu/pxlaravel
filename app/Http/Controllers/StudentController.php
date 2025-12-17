@@ -14,12 +14,12 @@ class StudentController extends Controller
     public function index(Request $request)
     {
 
-        $students = Student::when($request->search, function ($query) use ($request) {
-            return $query->whereAny('email', $request->search);
-        })->paginate(10);
-        return view('students.index', compact('students'));
-        // $students = Student::with('teacher')->get();
-        // return  $students;
+        // $students = Student::when($request->search, function ($query) use ($request) {
+        //     return $query->whereAny('email', $request->search);
+        // })->paginate(10);
+        // return view('students.index', compact('students'));
+        $students = Student::with('user')->get();
+        return  $students;
     }
 
 
